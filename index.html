@@ -4,10 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Chess Squaret</title>
+    <title>Random Chess Square</title>
+    <style>
+        body {
+            /* display: flex;
+            flex-wrap: wrap; */
+            font-family: Helvetica, Arial, sans-serif;
+            justify-content: space-between;
+            padding: 20px 35px;
+            background-color: rgb(81, 157, 170);
+            margin: auto;
+            text-align: center;
+            /* background-size: cover; */
+        }
+        header {
+            /* background-color: rgb(67, 98, 133); */
+            color: rgb(246, 247, 231);
+            padding-bottom: 100px;
+            text-shadow: 2px 2px rgb(45, 45, 46);
+        }
+        .square {
+            font-size: 56px;
+            margin-bottom: 100px;
+            text-shadow: 2px 2px rgb(246, 247, 231);
+        }
+        button {
+            padding: 8px;
+            color: rgb(246, 247, 231);
+            font-size: 24px;
+            background-color: rgb(42, 143, 117, 1);
+            border-radius: 10px;
+            /* border-bottom-color: rgb(45, 45, 46);
+            border-right-color: rgb(45, 45, 46); */
+            border-color: rgb(217, 217, 226) rgb(45, 45, 46) rgb(45, 45, 46) rgb(217, 217, 226);
+            text-shadow: 2px 2px rgb(45, 45, 46);
+        }
+    </style>
 </head>
 <body>
-    
+    <header class = "banner">
+        <h1>Random Chess Square Generator</h1>
+    </header>
+
+    <div class = "square-container">
+        <h2 class = "square">&nbsp;</h2>
+    </div>
+
+    <div class = "button">
+        <button type = "button" onclick="getSquare()">
+            Generate Square
+        </button>
+    </div>
+
+    <script>
+        function getSquare() {
+            const text = document.querySelector(".square");
+            text.textContent = "&nbsp";
+
+            const numbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
+            const letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+            const lett = letters[Math.floor(Math.random() * 8)];
+            const numb = numbers[Math.floor(Math.random() * 8)];
+            const newSquare = lett + numb;
+
+            return text.textContent = newSquare;
+        }
+    </script>
     
 </body>
 </html>
