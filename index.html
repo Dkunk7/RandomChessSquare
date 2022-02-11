@@ -24,12 +24,29 @@
             padding-bottom: 100px;
             text-shadow: 2px 2px rgb(45, 45, 46);
         }
+        h3 {
+            color: rgb(255, 255, 111);
+            text-shadow: 2px 2px rgb(45, 45, 46);
+            font-weight:600;
+        }
         .square {
+            color: rgb(247, 178, 75); /* rgb(253, 253, 95) spare yellow color */
             font-size: 56px;
             margin-bottom: 100px;
+            text-shadow: 2px 2px rgb(45, 45, 46);
+            border: none;
+            background: none;
+            font-weight: bolder;
+        }
+        .black {
+            color: rgb(45, 45, 46);
             text-shadow: 2px 2px rgb(246, 247, 231);
         }
-        button {
+        .white {
+            color: rgb(246, 247, 231);
+            text-shadow: 2px 2px rgb(45, 45, 46);
+        }
+        .generate {
             padding: 8px;
             color: rgb(246, 247, 231);
             font-size: 24px;
@@ -40,19 +57,23 @@
             border-color: rgb(217, 217, 226) rgb(45, 45, 46) rgb(45, 45, 46) rgb(217, 217, 226);
             text-shadow: 2px 2px rgb(45, 45, 46);
         }
+        
     </style>
 </head>
 <body>
     <header class = "banner">
         <h1>Random Chess Square Generator</h1>
+        <h3>click the square to reveal its color</h3>
     </header>
 
     <div class = "square-container">
-        <h2 class = "square">&nbsp;</h2>
+        <button class = "square" type = "button" onclick = "revealColor()">
+            &nbsp; <!-- this makes it so that even though the element is visually empty, it still takes up space on the page -->
+        </button>
     </div>
 
     <div class = "button">
-        <button type = "button" onclick="getSquare()">
+        <button class = "generate" type = "button" onclick = "getSquare()">
             Generate Square
         </button>
     </div>
@@ -60,6 +81,9 @@
     <script>
         function getSquare() {
             const text = document.querySelector(".square");
+            text.classList.remove("black");
+            text.classList.remove("white");
+
             text.textContent = "&nbsp";
 
             const numbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
@@ -70,6 +94,23 @@
             const newSquare = lett + numb;
 
             return text.textContent = newSquare;
+        }
+
+        function revealColor() {
+            // const colorArr = {
+            //     "a1": [ {"color": "black"} ], 
+            // }
+            const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h"];
+            const squareEl = document.querySelector(".square")
+            const squareText = squareEl.textContent;
+            // console.log(squareText[1]);
+            const squareNum = (alphabet.indexOf(squareText[0]) + 1) + parseInt(squareText[1]);
+            // console.log(squareNum);
+            if (squareNum % 2 === 0) {
+                squareEl.classList.add("black")
+            } else {
+                squareEl.classList.add("white")
+            }
         }
     </script>
     
